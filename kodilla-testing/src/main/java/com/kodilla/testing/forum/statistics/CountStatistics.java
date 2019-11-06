@@ -1,7 +1,5 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.List;
-
 public class CountStatistics {
     private int usersNumber;
     private int postsNumber;
@@ -10,15 +8,22 @@ public class CountStatistics {
     private double averageUsersComments;
     private double averagePostComments;
 
-
-
     public void calculateAdvStatistics(Statistics statistics) {
         usersNumber = statistics.usersNames().size();
         postsNumber = statistics.postsCount();
         commentsNumber = statistics.commentsCount();
-        averageUsersPosts = usersNumber / postsNumber;
-        averageUsersComments = usersNumber / commentsNumber;
-        averagePostComments = postsNumber / commentsNumber;
+        if (postsNumber != 0) {
+            averagePostComments = commentsNumber / (double) postsNumber;
+        } else {
+            averagePostComments = 0;
+        }
+        if (usersNumber != 0) {
+            averageUsersComments = commentsNumber / (double) usersNumber;
+            averageUsersPosts = postsNumber / (double) usersNumber;
+        } else {
+            averageUsersComments = 0;
+            averageUsersPosts = 0;
+        }
     }
 
     public int getUsersNumber() {
