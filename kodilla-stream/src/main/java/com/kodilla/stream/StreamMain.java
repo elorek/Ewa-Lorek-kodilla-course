@@ -1,27 +1,29 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.person.People;
-
-
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
+        Forum forum = new Forum();
 
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
-        System.out.println(poemBeautifier.beautify("Friendship", (someText) -> someText.toUpperCase()));
-        System.out.println(poemBeautifier.beautify("Memories", (someText) -> someText + " from my London tour"));
-        System.out.println(poemBeautifier.beautify("Happines", (someText) -> someText + "\u00A9"));
-        System.out.println(poemBeautifier.beautify("Dream", (someText) -> someText + "\nbig"));
+        Map<Integer, ForumUser> theResultMapOfUsers = forum.getUserList().stream()
+                .filter(user -> user.getSex() == 'M')
+                .filter(user -> Period.between(LocalDate.of(1965, 1,1), LocalDate.of(2019, 1, 1))
+                        .getYears() > 20)
+                .filter(user -> user.getPostsNumber() >= 1)
+                .collect(Collectors.toMap(ForumUser::getiD, user -> user));
 
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
-
-        People.getList().stream()
-                .filter(s -> s.length() > 11)
-                //.map(s -> s.toUpperCase()) // lub .map(String::toUpperCase)
-                .forEach(System.out::println); // lub .forEach(s -> System.out.println(s))
+        System.out.println("# elements: " + theResultMapOfUsers.size());
+        theResultMapOfUsers.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
     }
-
 }
+
+
+
