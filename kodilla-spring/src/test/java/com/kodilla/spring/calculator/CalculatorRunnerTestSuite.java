@@ -6,15 +6,15 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
-
-@RunWith(CalculatorRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
-public class CalculatorTestSuite {
+public class CalculatorRunnerTestSuite {
     @Test
     public void testCalculations() {
         // Given
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.calculator");
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Calculator calculator = (Calculator)context.getBean("calculator");
         // When
         double result1 = calculator.add(5.5, 2);
@@ -26,7 +26,5 @@ public class CalculatorTestSuite {
         Assert.assertEquals(8, result2, 0.001);
         Assert.assertEquals(48, result3, 0.001);
         Assert.assertEquals(5, result4, 0.001);
-
-
     }
 }

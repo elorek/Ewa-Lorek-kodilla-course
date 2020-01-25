@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Calculator {
+public final class Calculator {
     @Autowired
-    private Display display;
+    private final Display display;
+
+    public Calculator(Display display) {
+        this.display = display;
+    }
 
     public double add(double a, double b) {
         double result1 = a + b;
@@ -31,5 +35,4 @@ public class Calculator {
         display.displayValue(5);
         return result4;
     }
-
 }
