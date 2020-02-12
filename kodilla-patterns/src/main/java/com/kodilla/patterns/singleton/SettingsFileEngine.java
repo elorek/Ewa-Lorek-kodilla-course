@@ -2,7 +2,7 @@ package com.kodilla.patterns.singleton;
 
 public class SettingsFileEngine {
     private static SettingsFileEngine settingsFileEngineInstance = null;
-    private String fileName = "";
+    private String fileName;
 
     private SettingsFileEngine() {
     }
@@ -28,7 +28,7 @@ public class SettingsFileEngine {
     }
 
     public void close() {
-        this.fileName = "";
+        this.fileName = null;
         System.out.println("Closing the settings file");
     }
 
