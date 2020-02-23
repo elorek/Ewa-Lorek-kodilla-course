@@ -7,7 +7,7 @@ public class ForumUser {
     final String username;
 
     public ForumUser() {
-        this.username = "John Smith";
+        this.username = "John Smith"; //przekazanie wartosci na sztywno w konstruktorze bezargumentowym (puste())
     }
 
     public String getUsername() {
