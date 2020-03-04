@@ -28,10 +28,10 @@ public class TaskListDaoTestSuite {
         //When
         List<TaskList> foundTask = taskListDao.findByListName(ListName);
         //Then
-        Assert.assertEquals(1, foundTask.size());
+        Assert.assertEquals(5, foundTask.size());
         //Cleanup
-        // int id = foundTask.get(0).getId();
-        // taskListDao.deleteById(id);
+        int id = foundTask.get(0).getId();
+        taskListDao.deleteById(id);
     }
 
     @Test
@@ -57,6 +57,6 @@ public class TaskListDaoTestSuite {
         Assert.assertNotEquals(0, id);
 
         //CleanUp
-        //taskListDao.deleteById(id);
+        taskListDao.deleteById(id);
     }
 }

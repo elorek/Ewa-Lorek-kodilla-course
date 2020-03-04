@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.task.dao;
 
 import com.kodilla.hibernate.task.TaskFinancialDetails;
-import com.kodilla.hibernate.tasklist.dao.TaskFinancialDetailsDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +28,7 @@ public class TaskFinancialDetailsDaoTestSuite {
         List<TaskFinancialDetails> resultList = taskFinancialDetailsDao.findByPaid(false);
 
         //Then
-        Assert.assertEquals(1, resultList.size());
+        Assert.assertEquals(11, resultList.size());
 
         //CleanUp
         taskFinancialDetailsDao.deleteById(id);
