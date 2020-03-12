@@ -5,6 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+        name = "Company.searchByFirstThreeLettersOfCompanyName",
+        query = "SELECT * FROM Companies where LEFT(company_name, 3) like :NAME ", resultClass = Company.class)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
