@@ -1,10 +1,13 @@
 package com.kodilla.hibernate.manytomany;
 
+import org.springframework.stereotype.Service;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 @NamedQuery(name = "Employee.searchByLastname", query = "FROM Employee where lastname like :LASTNAME")
 @Entity
 @Table(name = "EMPLOYEES")

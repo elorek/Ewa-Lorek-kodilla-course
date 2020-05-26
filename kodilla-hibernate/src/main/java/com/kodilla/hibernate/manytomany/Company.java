@@ -1,10 +1,13 @@
 package com.kodilla.hibernate.manytomany;
 
+import org.springframework.stereotype.Service;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 @NamedNativeQuery(
         name = "Company.searchByFirstThreeLettersOfCompanyName",
         query = "SELECT * FROM Companies where LEFT(company_name, 3) like :NAME ", resultClass = Company.class)
