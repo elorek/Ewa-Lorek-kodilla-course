@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@NamedQuery(name = "Employee.searchByLastname", query = "FROM Employee where lastname like :LASTNAME")
+@NamedQuery(name = "Employee.searchByLastname", query = "FROM Employee where lastname like concat('%',:LASTNAME,'%')")
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
