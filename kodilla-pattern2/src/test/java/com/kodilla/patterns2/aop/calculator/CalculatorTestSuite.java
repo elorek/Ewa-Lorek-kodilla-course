@@ -66,5 +66,4 @@ public class CalculatorTestSuite {
         System.out.println(result);
         assertTrue(BigDecimal.ONE.compareTo(result) < 0);
     }
-
 }

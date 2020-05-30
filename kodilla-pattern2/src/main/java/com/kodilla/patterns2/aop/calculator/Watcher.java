@@ -35,4 +35,9 @@ public class Watcher {
         }
         return result;
     }
+
+    @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))")
+    public void logProcessOrderEvoking() {
+        LOGGER.info("Logging the method evoking");
+    }
 }
